@@ -9,15 +9,17 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 
-    @using (Html.BeginForm("Index", "Articles", FormMethod.Get))
+    @using (Html.BeginForm("Index", "Articles","Category", FormMethod.Get))
     {
         <p> 
             Title: @Html.TextBox("SearchIndex")
-            Genre: @Html.DropDownList("Category","ALL") 
+            Category: @Html.DropDownList("Category","ALL") 
             <input type="submit" value="Filter" />
         </p>
     }
 </p>
+
+
 <table class="table">
     <tr>
         <th>
@@ -25,6 +27,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ReleaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Body)
@@ -37,15 +42,15 @@
     <td>
         @Html.DisplayFor(modelItem => item.Title)
     </td>
-        @Html.DisplayFor(modelItem => item.Category)
-    </td>
     <td>
         @Html.DisplayFor(modelItem => item.ReleaseDate)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.Body)
+        @Html.DisplayFor(modelItem => item.Category)
     </td>
     <td>
+        @Html.DisplayFor(modelItem => item.Body)
+    </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
         @Html.ActionLink("Details", "Details", new { id = item.ID }) |
