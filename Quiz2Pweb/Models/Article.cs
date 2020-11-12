@@ -11,6 +11,7 @@ namespace Quiz2Pweb.Models
     {
         public int ID { get; set; }
         public string Title { get; set; }
+        public string Category { get; set; }
         [Display(Name = "Release Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]

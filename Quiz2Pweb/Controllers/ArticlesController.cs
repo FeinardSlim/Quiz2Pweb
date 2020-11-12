@@ -15,9 +15,26 @@ namespace Quiz2Pweb.Controllers
         private ArticleDBContext db = new ArticleDBContext();
 
         // GET: Articles
-        public ActionResult Index()
+/*        public ActionResult Index()
         {
             return View(db.Articles.ToList());
+        }*/
+
+        public ActionResult Index(string searchIndex)
+        {
+            var artikel = from m in db.Articles select m;
+
+            if (!String.IsNullOrEmpty(searchIndex))
+            {
+                artikel = artikel.Where(s => s.Title.Contains(searchIndex));
+            }
+            return View(artikel);
+        }
+
+        [HttpPost]
+        public string Index(FormCollection fc, string searchIndex)
+        {
+            return "<h3> From [HttpPost]Index: " + searchIndex + "</h3>";
         }
 
         // GET: Articles/Details/5
