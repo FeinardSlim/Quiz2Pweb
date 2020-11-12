@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Quiz2Pweb.Controllers
 {
+    [Authorize]
     public class ArticlesController : Controller
     {
         private ArticleDBContext db = new ArticleDBContext();
