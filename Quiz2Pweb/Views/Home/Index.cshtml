@@ -17,7 +17,11 @@
 <div class="jumbotron">
     <h1>ARCO</h1>
     <p class="lead">ARCO adalah bagian artikel dari SISCO (Sistem Informasi Siaga Corona)</p>
-    <p><a href="/Home/About" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <a href="/Home/About" class="btn btn-primary btn-lg">Learn more &raquo;</a>
+    @if (this.User.Identity.IsAuthenticated)
+    {
+        <a href="/Articles" class="btn btn-primary btn-lg">Artikel CRUD &raquo;</a>
+    }
 </div>
 
 @foreach (var item in Model)

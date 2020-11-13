@@ -4,6 +4,8 @@
     ViewBag.Title = "Articles";
 }
 
+<link href="~/css/indextable.css" rel="stylesheet" type="text/css" />
+
 <h2>Index</h2>
 <div class="container" style="padding: 10px 0px 10px 3%">
     <a href="/Articles/Create" class="btn btn-success" >Create New</a>
@@ -48,9 +50,11 @@
                 @Html.DisplayFor(modelItem => item.Category)
             </td>
             <td>
-                @Html.Raw(@item.Body.ToString())
+                <div style="height:20px; overflow:hidden">
+                    @Html.Raw(@item.Body.ToString())
+                </div>      
             </td>
-            <td>
+            <td >
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.ID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ID })
