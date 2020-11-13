@@ -1,0 +1,42 @@
+﻿
+.profil {
+    margin-top: 6.5%;
+    margin-left: 20%;
+    margin-bottom: 15%;
+    display: flex;
+    position: relative;
+    text-align: center;
+}
+
+    .profil img {
+        background-color: #b11414;
+        padding: 10px 10px 30px 10px;
+        width: 40%;
+    }
+
+    .profil .teksprofil {
+        text-align: left;
+        padding: 5%;
+        background-color: white;
+        width: 40%;
+        position: absolute;
+        top: 77%;
+        left: 43%;
+        transform: translate(-50%, -50%);
+    }
+
+    .profil h1 {
+        font-size: 3vw;
+        font-weight: normal;
+    }
+
+    .profil h3 {
+        font-size: 2vw;
+        color: #b11414;
+        margin-top: 30px;
+    }
+
+    .profil h5 {
+        font-size: 1.2vw;
+        margin-top: 30px;
+    }

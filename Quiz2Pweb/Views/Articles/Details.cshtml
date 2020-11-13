@@ -7,6 +7,17 @@
     dd {
         word-break: break-all;
     }
+    a {
+        text-decoration:none;
+        color : #ffffff;
+    }
+    a:visited{
+        text-decoration:none;
+        color : #ffffff;
+    }
+    a:hover{
+        text-decoration:none;
+    }
 </style>
 
 <h2>Details</h2>
@@ -36,12 +47,16 @@
         </dt>
 
         <dd>
-            @Html.Raw(@Model.Body.ToString())
+            @*@Html.Raw(@Model.Body.ToString())*@
         </dd>
 
     </dl>
+    <div class="container" style="padding-left:11%;padding-bottom:10%">
+        @Html.Raw(@Model.Body.ToString())
+    </div>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    <div class="btn btn-info"> @Html.ActionLink("Edit", "Edit", new { id = Model.ID })</div>
+    &nbsp;
+    <a href="/Articles" class="btn btn-info">Back to list</a>
 </p>

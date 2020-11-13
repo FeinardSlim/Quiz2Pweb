@@ -16,6 +16,17 @@ namespace Quiz2Pweb.Controllers
         private ArticleDBContext db = new ArticleDBContext();
         public ActionResult Index(string Category, string searchIndex, string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.CurrentFilter = searchString;
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
             var CategoryList = new List<string>();
 
             var CategoryQuery = from d in db.Articles
@@ -35,14 +46,28 @@ namespace Quiz2Pweb.Controllers
             {
                 artikel = artikel.Where(s => s.Category == Category);
             }
+                    
+            
+            
+            
+            artikel = artikel.OrderByDescending(s => s.ReleaseDate);
 
-            return View(artikel.ToList());
+
+            // return View(artikel.ToList());
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(artikel.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "ARCO (Artikel Corona)";
 
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
             return View();
         }
 
