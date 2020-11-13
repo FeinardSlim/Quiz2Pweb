@@ -9,7 +9,6 @@ using System.Web.Mvc;
 
 namespace Quiz2Pweb.Controllers
 {
-    [Authorize]
     public class ArticlesController : Controller
     {
         private ArticleDBContext db = new ArticleDBContext();
@@ -67,6 +66,7 @@ namespace Quiz2Pweb.Controllers
         }
 
         // GET: Articles/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -90,6 +90,7 @@ namespace Quiz2Pweb.Controllers
         }
 
         // GET: Articles/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -121,6 +122,7 @@ namespace Quiz2Pweb.Controllers
         }
 
         // GET: Articles/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
