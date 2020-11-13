@@ -5,8 +5,9 @@
 }
 
 <h2>Index</h2>
-
-@Html.ActionLink("Create New", "Create")
+<div class="container" style="padding: 10px 0px 10px 3%">
+    <a href="/Articles/Create" class="btn btn-success" >Create New</a>
+</div>
 
 @using (Html.BeginForm("Index", "Articles", "Category", FormMethod.Get))
 {
