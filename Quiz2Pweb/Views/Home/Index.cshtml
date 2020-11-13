@@ -17,7 +17,7 @@
 <div class="jumbotron">
     <h1>ARCO</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <p><a href="/Home/About" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
 @foreach (var item in Model)
@@ -32,7 +32,7 @@
                     Ditulis pada @Html.DisplayFor(modelItem => item.ReleaseDate) oleh Admin
                 </small>
                 <p>@Html.ActionLink("Baca Selengkapnya...", "Details", new { id = item.ID })</p>
-                <small>#@Html.DisplayFor(modelItem => item.Category)</small>
+                <small> <a href="/?SearchIndex=&Category=@Html.DisplayFor(modelItem => item.Category)">#@Html.DisplayFor(modelItem => item.Category)</a></small>
             </div>
         </div>
     </div>
