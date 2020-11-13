@@ -14,33 +14,29 @@ namespace Quiz2Pweb.Controllers
     {
 
         private ArticleDBContext db = new ArticleDBContext();
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string Category, string searchIndex, string sortOrder, string currentFilter, string searchString, int? page)
         {
-/*
-            var artikel = from s in db.Articles
-                          sele*/
+            var CategoryList = new List<string>();
 
-  /*          ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-            var students = from s in db.Students
-                           select s;
-            switch (sortOrder)
+            var CategoryQuery = from d in db.Articles
+                                orderby d.Category
+                                select d.Category;
+
+            CategoryList.AddRange(CategoryQuery.Distinct());
+            ViewBag.Category = new SelectList(CategoryList);
+
+            var artikel = from m in db.Articles select m;
+
+            if (!String.IsNullOrEmpty(searchIndex))
             {
-                case "name_desc":
-                    students = students.OrderByDescending(s => s.LastName);
-                    break;
-                case "Date":
-                    students = students.OrderBy(s => s.EnrollmentDate);
-                    break;
-                case "date_desc":
-                    students = students.OrderByDescending(s => s.EnrollmentDate);
-                    break;
-                default:
-                    students = students.OrderBy(s => s.LastName);
-                    break;
+                artikel = artikel.Where(s => s.Title.Contains(searchIndex));
             }
-            return View(students.ToList());*/
-            return View();
+            if (!String.IsNullOrEmpty(Category))
+            {
+                artikel = artikel.Where(s => s.Category == Category);
+            }
+
+            return View(artikel.ToList());
         }
 
         public ActionResult About()
@@ -48,6 +44,21 @@ namespace Quiz2Pweb.Controllers
             ViewBag.Message = "Your application description page.";
 
             return View();
+        }
+
+        // GET: Articles/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Article article = db.Articles.Find(id);
+            if (article == null)
+            {
+                return HttpNotFound();
+            }
+            return View(article);
         }
     }
 }

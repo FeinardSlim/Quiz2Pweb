@@ -18,7 +18,7 @@ namespace Quiz2Pweb.Controllers
                 {
                     return View(db.Articles.ToList());
                 }*/
-
+        [Authorize]
         public ActionResult Index(string Category, string searchIndex ,string sortOrder)
         {
             var CategoryList = new List<string>();
@@ -68,7 +68,7 @@ namespace Quiz2Pweb.Controllers
             }
             return View(artikel.ToList());
 
-            return View(artikel);
+            // return View(artikel);
         }
 
         [HttpPost]
@@ -93,7 +93,7 @@ namespace Quiz2Pweb.Controllers
         }
 
         // GET: Articles/Create
-        [Authorize]
+        
         public ActionResult Create()
         {
             return View();
@@ -117,7 +117,6 @@ namespace Quiz2Pweb.Controllers
         }
 
         // GET: Articles/Edit/5
-        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -149,7 +148,6 @@ namespace Quiz2Pweb.Controllers
         }
 
         // GET: Articles/Delete/5
-        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
