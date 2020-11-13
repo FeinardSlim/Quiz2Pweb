@@ -6,30 +6,28 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+@Html.ActionLink("Create New", "Create")
 
-    @using (Html.BeginForm("Index", "Articles","Category", FormMethod.Get))
-    {
-        <p> 
-            Title: @Html.TextBox("SearchIndex")
-            Category: @Html.DropDownList("Category","ALL") 
-            <input type="submit" value="Filter" />
-        </p>
-    }
-</p>
+@using (Html.BeginForm("Index", "Articles","Category", FormMethod.Get))
+{
+    <p> 
+        Title: @Html.TextBox("SearchIndex")
+        Category: @Html.DropDownList("Category","ALL") 
+        <input type="submit" value="Filter" />
+    </p>
+}
 
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.ActionLink("Title","Index",new { sortOrder = ViewBag.TitleSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
+            @Html.ActionLink("Release Date","Index", new { sortOrder = ViewBag.ReleaseDateSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Category)
+            @Html.ActionLink("Category","Index", new{ sortOrder = ViewBag.CategorySortParam })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Body)

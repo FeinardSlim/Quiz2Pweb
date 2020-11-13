@@ -19,7 +19,7 @@ namespace Quiz2Pweb.Controllers
                     return View(db.Articles.ToList());
                 }*/
 
-        public ActionResult Index(string Category, string searchIndex)
+        public ActionResult Index(string Category, string searchIndex ,string sortOrder)
         {
             var CategoryList = new List<string>();
 
@@ -40,6 +40,33 @@ namespace Quiz2Pweb.Controllers
             {
                 artikel = artikel.Where(s => s.Category == Category);
             }
+
+            ViewBag.TitleSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.ReleaseDateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.CategorySortParam = sortOrder == "Category" ? "category_desc" : "Category";
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    artikel = artikel.OrderByDescending(s => s.Title);
+                    break;
+                case "Date":
+                    artikel = artikel.OrderBy(s => s.ReleaseDate);
+                    break;
+                case "date_desc":
+                    artikel = artikel.OrderByDescending(s => s.ReleaseDate);
+                    break;
+                case "Category":
+                    artikel = artikel.OrderBy(s => s.Category);
+                    break;
+                case "category_desc":
+                    artikel = artikel.OrderByDescending(s => s.Category);
+                    break;
+                default:
+                    artikel = artikel.OrderBy(s => s.Title);
+                    break;
+            }
+            return View(artikel.ToList());
 
             return View(artikel);
         }
