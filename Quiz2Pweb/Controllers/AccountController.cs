@@ -163,7 +163,7 @@ namespace Quiz2Pweb.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Articles");
+                    return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
@@ -392,7 +392,7 @@ namespace Quiz2Pweb.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Articles");
+            return RedirectToAction("Index", "Home");
         }
 
         //
@@ -449,7 +449,7 @@ namespace Quiz2Pweb.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Articles");
+            return RedirectToAction("Index", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
