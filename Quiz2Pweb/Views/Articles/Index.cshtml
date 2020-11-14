@@ -8,7 +8,7 @@
 
 <h2>Index</h2>
 <div class="container" style="padding: 10px 0px 10px 3%">
-    <a href="/Articles/Create" class="btn btn-success" >Create New</a>
+    <a href="/Articles/Create" class="btn btn-success" >Buat artikel baru/a>
 </div>
 
 @using (Html.BeginForm("Index", "Articles", "Category", FormMethod.Get))
@@ -56,7 +56,7 @@
             </td>
             <td >
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Detl", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Detil", "Details", new { id = item.ID }) |
                 @Html.ActionLink("Hapus", "Delete", new { id = item.ID })
             </td>
         </tr>
